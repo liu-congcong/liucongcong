@@ -2,7 +2,7 @@ import numpy
 from matplotlib import pyplot
 from matplotlib.pyplot import subplots
 from matplotlib.ticker import AutoMinorLocator
-from .hcl import HCL
+from .hcl import hcl
 
 
 class PLOT:
@@ -20,9 +20,8 @@ class PLOT:
         return None
 
     def plot(self, x, y, l):
-        hcl = HCL()
         unique_labels = numpy.unique(l)
-        for label, color in zip(unique_labels, hcl.main(unique_labels.size)):
+        for label, color in zip(unique_labels, hcl(unique_labels.size)):
             mask = l == label
             x_ = x[mask]
             y_ = y[mask]
